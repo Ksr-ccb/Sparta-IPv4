@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>권새롬</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Jua&family=Noto+Sans+KR:wght@500&display=swap');
+
+        * {
+            font-family: "Jua", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            padding-top: 60px;
+            width: 80%;
+            margin: 100px auto 20px auto;
+        }
+
+        .mycontents {
+            display: flex;
+            flex-direction: column;
+            /* 세로 정렬 */
+            gap: 10px;
+            /* 항목 간 간격 */
+            text-align: center;
+            /* 텍스트 가운데 정렬 */
+        }
+
+        .homeImage {
+            width: 400px;
+            padding: 30px;
+            flex-shrink: 0;
+            /* 이미지 크기 고정 (줄어들지 않게) */
+        }
+
+        nav {
+            position: fixed;
+            /* 화면에 고정 */
+            top: 0;
+            /* 위쪽에 배치 */
+            width: 80%;
+            /* 전체 너비 */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            z-index: 1000;
+            /* 다른 요소보다 위에 배치 */
+            font-size: 30px;
+            background-color: white;
+        }
+
+
+        .container {
+            display: flex;
+            /* flexbox 사용 */
+            align-items: center;
+            /* 세로 정렬 (가운데 정렬) */
+            gap: 20px;
+            /* 이미지와 글 사이 여백 */
+            margin: 50px auto;
+            /* 가운데 정렬 */
+        }
+
+        .infobox {
+            flex: 1;
+            /* 나머지 공간 차지 */
+            margin-left: 0;
+            /* 왼쪽 여백 없애기 */
+        }
+
+        .profile-text {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            /* 왼쪽(항목):오른쪽(답변) 비율 */
+            gap: 5px 15px;
+            /* 세로 5px, 가로 15px 간격 */
+        }
+
+        .profile-text div {
+            font-size: 30px;
+        }
+
+        .label {
+            font-weight: bold;
+            /* 왼쪽 항목(이름, MBTI 등) 강조 */
+            text-align: right;
+            /* 오른쪽 정렬 */
+        }
+
+        .card {
+            width: 600px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="#home">소개합니다</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#development">개발경험</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#scrollspyHeading3">취미</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+        data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0"
+        class="mycontents">
+
+        <div class="categoty" id="home">
+            <h2> 저에 대해서 소개합니다. </h2>
+            <div class="container">
+
+                <img class="homeImage"
+                    src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/ca97d199-ea6a-4493-aba8-4effdcb2b9ca/KakaoTalk_20250217_192418929.jpg?table=block&id=19dac552-1972-80bf-a8ce-d350a67f78b1&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=2IKTk24qK5tRyY1omAkSdJm5yfjyzDenvGY_cv52ac0&downloadName=KakaoTalk_20250217_192418929.jpg"
+                    alt="...">
+
+                <div class="mycontents">
+                    <div class="profile-text">
+                        <div class="label">이름:</div>
+                        <div>권새롬</div>
+                        <div class="label">MBTI:</div>
+                        <div>ISTP</div>
+                        <div class="label">취미:</div>
+                        <div>엄청많음</div>
+
+                    </div>
+                    <div style="font-size: 20px;">
+                        <hr>
+                        안녕하세요! 내일배움캠프 스프링 6기에 참여하게 된 권새롬입니다 <br>
+                        작년에 졸업하고 취업 준비를 하면서 부트캠프의 필요성을 많이 느끼게 되어 참여하게 되었습니다! <br>
+                        4개월 동안 좋은 경험 많이 하고 가고싶어요~
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        <div class="categoty" id="development">
+            <h2> 이때까지 해왔던 것들 </h2>
+            <div class="mycontents">
+            </div>
+        </div>
+        <hr>
+        <div class="categoty" id="hobby">
+            <h2> 잡다한 취미들 </h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                  <div class="card">
+                    <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/b66e25fe-676d-483e-9bff-f456ac02cab1/KakaoTalk_20250113_151900781_02.jpg?table=block&id=19dac552-1972-80f0-9ccc-ea643313ffc0&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=r2Qhz0Oms-ftj9UrsADPFg1XDVtZLnuibB-co_70wOg&downloadName=KakaoTalk_20250113_151900781_02.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">컴퓨터 조립</h5>
+                      <p class="card-text">18년도 제 첫 컴퓨터를 혼자 조립했을 때 부터 부품교체나 친구들 컴퓨터까지 쫌쫌따리 조립해주다보니 취미가 되엇습니다. <br> 막 엄청 잘 알지도 못하는데 주변에 할줄 아는 사람이 없어서... 그렇게 됐다. 재밋어요 </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="card">
+                    <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/81040e31-b138-4d44-8fc7-8ee8a733542a/KakaoTalk_20250113_151900781.jpg?table=block&id=19dac552-1972-800b-a26b-edc86f60af13&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=I5z-YRrw2t6-w45E4qZ5ffFIivFWmJgcAKYLYO7v7ZA&downloadName=KakaoTalk_20250113_151900781.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">짱구 짤 모으기</h5>
+                      <p class="card-text">티빙 연간 결제권을 어느새 4년째 구매하고있는데요. <br> 거기서 뭘하냐면 짱구 정주행을 하면서 귀여운 짤을 캡쳐해서 모아요 ^^ 
+                        <br> 지금까지 500장정도 모았어요
+                        <br> 짱구너무 귀엽다. 굿즈도 살 수 잇는건 아주 조금씩 사요! </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/9d3be5a3-9ae5-44b0-b844-99a81a2a8823/cc6a31e8-c053-4488-86fb-0a7e4d7a79d2.png?table=block&id=19dac552-1972-808d-bf55-e230a2575693&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=p06Iq4ivn4WHL4a9ioV9uoUYrGi_wflPDsQqL9wzJMw&downloadName=KakaoTalk_20250113_151900781_01.jpg.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">깜이랑 복동이</h5>
+                      <p class="card-text">본가에서 최근에 입양한 우리집 아기 갱얼쥐 자랑이 하고싶었어요<br> 본가 갈때마다 덩치가 1.5배씩 늘어서 사진만 엄청찍는 중 ㅜㅜ </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/e89064d8-fd25-4d90-8561-48037b26480a/9fe06e8d-3d55-4c63-8b00-b76f74ee8598.png?table=block&id=19dac552-1972-80ef-b8fc-cd3d78293723&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=IDw7cVp_PfzJPDKFe7KK9-5QL7Da4mkiv9audKynY0I&downloadName=KakaoTalk_20250113_151900781_05.jpg.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">게임</h5>
+                      <p class="card-text">근 15년간 넥슨의 노예가 되어 게임을 해오는 중입니다. . . .<br> 매년 지스타 출석도장은 물론찍고잇어요</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
