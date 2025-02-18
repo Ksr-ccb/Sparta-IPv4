@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>류형철</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Poppins:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Poppins', sans-serif;
+            /* 한글 & 영문 폰트 */
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            /* 헤더는 영문 폰트 적용 */
+            font-weight: 700;
+            /* 굵게 */
+        }
+
+        p {
+            font-family: 'Noto Sans KR', sans-serif;
+            /* 본문은 한글 폰트 적용 */
+            font-weight: 400;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 헤더 스타일 */
+        header {
+            background: url('https://cdn.pixabay.com/photo/2016/05/21/13/28/banner-1406825_640.png') no-repeat center center/cover;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            /* 상단 배너 높이 80px */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        /* 네비게이션 컨테이너 */
+        .nav-container {
+            width: 100%;
+            max-width: 1100px;
+            /* 너비 제한 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            /* 부모 헤더 높이에 맞춤 */
+        }
+
+        /* 버튼 컨테이너 */
+        .button-container {
+            display: flex;
+            gap: 10px;
+            height: 100%;
+            /* 부모 요소의 높이에 맞춤 */
+            align-items: center;
+        }
+
+        /* 버튼 스타일 */
+        .button-container button {
+            font-weight: bold;
+            border-radius: 25px;
+            padding: 0 12px;
+            /* 좌우 패딩만 조정 */
+            font-size: 14px;
+            height: 40px;
+            /* 버튼 높이를 40px로 제한 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            /* 텍스트 줄바꿈 방지 */
+        }
+
+        .button-container button:hover {
+            transform: scale(1.1);
+            background-color: #28a745;
+        }
+
+        .hobby-image img {
+            width: 300px;
+            /* 모든 이미지의 너비를 300px로統一 */
+            height: 200px;
+            /* 모든 이미지의 높이를 200px로 동일하게 */
+            object-fit: cover;
+            /* 이미지 비율을 유지하면서 크기에 맞춤 */
+            border-radius: 10px;
+            /* 모서리를 둥글게 */
+            margin: 5px;
+            /* 이미지 간 여백 */
+        }
+
+
+        /* 프로필 섹션 */
+        #profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 150px 10px auto auto
+        }
+
+        /* 카드 컨테이너 */
+        .card-container {
+            width: 220px;
+            height: 310px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        /* 카드 */
+        .card {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.ibb.co/svCR2zzR/Kakao-Talk-20250205-124358285.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            backface-visibility: hidden;
+        }
+
+        /* 반짝이는 효과 */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(105deg,
+                    transparent 40%,
+                    rgba(255, 219, 112, 0.8) 45%,
+                    rgba(132, 50, 255, 0.6) 50%,
+                    transparent 54%);
+            filter: brightness(1.5) opacity(0.9);
+            mix-blend-mode: color-dodge;
+            background-size: 300% 300%;
+            transition: all 0.2s ease-out;
+            border-radius: 15px;
+            opacity: 0;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        section {
+            margin: 30px 0;
+            padding: 20px;
+        }
+
+        /* 취미 섹션 이미지 크기 통일 */
+        .hobby-image img {
+            width: 300px;
+            /* 가로 크기 동일하게 */
+            height: 200px;
+            /* 세로 크기 동일하게 */
+            object-fit: cover;
+            /* 비율을 유지하면서 크기 조정 */
+            border-radius: 10px;
+            margin: 5px;
+        }
+
+        /* 취미 이미지 숨기기 기본값 */
+        .hobby-image {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* 취미 버튼 스타일 개선 */
+        .hobby-section button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hobby-section button:hover {
+            background-color: #218838;
+        }
+
+        /* 선택된 이미지가 보일 때 효과 */
+        .hobby-image.active {
+            display: block;
+            opacity: 1;
+        }
+
+        @keyframes flash {
+            0% {
+                background-color: rgba(28, 68, 95, 0.5);
+            }
+
+            50% {
+                background-color: rgba(255, 255, 0, 0);
+            }
+
+            100% {
+                background-color: rgba(28, 68, 95, 0.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 헤더 -->
+    <header>
+        <div class="nav-container container">
+            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+            <div class="button-container">
+                <button type="button" class="btn btn-success">프로필</button>
+                <button type="button" class="btn btn-success">목표</button>
+                <button type="button" class="btn btn-success">취미</button>
+                <button type="button" class="btn btn-success">링크</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 -->
+    <div class="container">
+        <div class="header">
+
+        </div>
+    </div>
+
+    <!-- 프로필 섹션 -->
+    <section id="profile">
+        <div class="card-container">
+            <div class="card">
+                <div class="overlay"></div>
+            </div>
+        </div>
+        <div>
+            <h2>이름 : 류형철 (완전체)</h2>
+            <p>MBTI : INFP </p>
+            <p>TYPE:인간형,백수형</P>
+            <P>필살기 : 드러눕기</P>
+            <p>자동차전문대 졸업 <br>
+                오토바이회사 5년근무<br>
+                열심히 살아보기위해 sparta 지원
+            </p>
+            <p>←있어보이려고 유튜브 따라해봄</p>
+        </div>
+
+
+
+    </section>
+
+    <section id="goals">
+        <h2> 목표</h2>
+        <p>- 배우는 것들이 전부 새롭고 어렵지만 뭐든 포기하지않고 열심히해보자!
+        <p>- 개발자로서의 세부적인 목표는 아직 정하지 않았지만<br>
+            관심있는 자동차,게임,AI 와 관련된 기술을 늘리고 싶습니다.</p>
+
+    </section>
+
+    <section id="hobby" class="hobby-section">
+        <h2> 취미 </h2>
+        <button onclick="showImage('game')">게임</button>
+        <button onclick="showImage('reading')">독서</button>
+        <button onclick="showImage('running')">돌아다니기</button>
+
+        <div id="game" class="hobby-image">
+            <img src="https://www.techm.kr/news/photo/202207/99005_114831_3410.jpg" alt="롤" class="img-fluid">
+            <img src="https://img.hankyung.com/photo/202309/AKR20230921134400017_01_i_P4.jpg" alt="피파"
+                class="img-fluid">
+            <img src="https://i.namu.wiki/i/_ehaBc7iheOdQhfQS6-yhdlEg8pzdP4kgvVFsQxzNebWfKxr3UhL2NLdB97PiplFcr_MzIGqJuZqDmHbz7KNAQ.webp"
+                alt="문명" class="img-fluid">
+        </div>
+        <div id="reading" class="hobby-image">
+            <img src="https://contents.kyobobook.co.kr/sih/fit-in/400x0/pdt/9788936434595.jpg" alt="채식주의자"
+                class="img-fluid">
+            <img src="https://contents.kyobobook.co.kr/sih/fit-in/400x0/pdt/9791198517425.jpg" alt="불변의법칙"
+                class="img-fluid">
+            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791190157896.jpg" alt="돌이킬수없는 약속"
+                class="img-fluid">
+        </div>
+        <div id="running" class="hobby-image">
+            <img src="https://ifh.cc/g/vYsKx5.jpg" alt="산책1" class="img-fluid">
+            <img src="https://ifh.cc/g/6qkw5V.jpg" alt="산책2" class="img-fluid">
+            <img src="https://ifh.cc/g/fhMgzF.jpg" alt="산책3" class="img-fluid">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>링크</h2>
+        <p>📧 이메일: fbgudcj2@gmail.com</p>
+        <p>🔗 깃허브: <a href="https://github.com/jarvisRyu" target="_blank">https://github.com/jarvisRyu</a></p>
+        <p>📝 블로그: <a href="https://velog.io/@jarvis1/posts" target="_blank">Velog </a></p>
+    </section>
+
+    </div>
+
+    <!-- 카드 애니메이션 -->
+    <script>
+        var cardContainer = document.querySelector('.card-container');
+        var card = document.querySelector('.card');
+        var overlay = document.querySelector('.overlay');
+
+        cardContainer.addEventListener('mousemove', function (e) {
+            var rect = cardContainer.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+
+            var rotateY = (x / rect.width) * 30 - 15;
+            var rotateX = -(y / rect.height) * 30 + 15;
+
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            card.style.boxShadow = "0px 15px 30px rgba(255, 255, 255, 0.3)";
+
+            overlay.style.opacity = 1;
+            overlay.style.transform = `translate3d(${x / 5}px, ${y / 5}px, 0)`;
+        });
+
+        cardContainer.addEventListener('mouseleave', function () {
+            card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+            card.style.boxShadow = "0px 10px 30px rgba(255, 255, 255, 0.1)";
+            overlay.style.opacity = 0;
+        });
+        function showImage(hobby) {
+            // 모든 이미지 숨기기
+            document.querySelectorAll('.hobby-image').forEach(img => {
+                img.classList.remove('active');
+            });
+
+            // 선택한 취미 카테고리만 표시
+            document.getElementById(hobby).classList.add('active');
+        }
+
+
+        function flashSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            if (section) {
+                section.style.animation = "flash 1s ease-in-out"; // 반짝이는 효과 적용
+                setTimeout(() => {
+                    section.style.animation = ""; // 일정 시간 후 효과 제거
+                }, 1000);
+            }
+        }
+
+        // 버튼 클릭 이벤트 연결
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".button-container button").forEach((button, index) => {
+                const sections = ["profile", "goals", "hobby", "contact"]; // 섹션 ID 목록
+                if (index < sections.length) {
+                    button.addEventListener("click", function () {
+                        flashSection(sections[index]);
+                    });
+                }
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>
