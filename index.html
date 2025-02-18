@@ -32,10 +32,59 @@
 
         .header {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .header img {
+            max-width: 100px;
+            /* 로고 크기 조절 */
+            height: auto;
+        }
+
+        .header .text-content {
+            flex-grow: 1;
             text-align: left;
             padding-left: 20px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        @media (min-width: 768px) {
+
+            .container,
+            .container-md,
+            .container-sm {
+                
+                height: 360px;
+            }
+        }
+
+        .container.head {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .display-5 {
+            max-width: 700px;
+            width: auto;
+            margin: 0;
+            text-align: left;
+            padding-left: 20px;
+            font-size: 1.8rem;
         }
 
         .fade-in {
@@ -68,20 +117,25 @@
 
         }
 
+        .card-img-top {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+
+
         .card:hover {
-            transform: scale(1.05);
-            transition: 0.3s ease-in-out;
+            transform: scale(1.05) translateY(-10px);
+
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
         }
 
 
 
-        .container.head {
-            display: flex;
-            justify-content: center;
-            width: 70%;
-            margin: 30px auto;
-        }
+
 
         .row {
             width: 1300px;
@@ -133,8 +187,15 @@
         }
 
         .gusetbook {
-            width: 70%;
-            margin: 30px auto;
+            width: 60%;
+            margin: 140px auto;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            /* 버튼을 오른쪽 정렬 */
         }
     </style>
 
@@ -144,7 +205,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { collection, addDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { updateDoc, deleteDoc,doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { updateDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -292,7 +353,7 @@
     <div class="container" style="display: flex; justify-content: flex-start;">
         <div class="header">
             <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-                <h1 class="display-5 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">Iv4</h1>
+                <h1 class="display-5 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">IPv4</h1>
                 <p>내일배움캠프 첫주차 프로젝트 4조입니다</p>
                 <p>우리 팀은 모두 MBTI에서 I(내향)와 P(즉흥)를 갖고 있어서, 공통점을 살려 팀 이름을 'IPv4'로 정했습니다. <br>
                     인터넷 프로토콜인 IPv4처럼, 우리도 신속하게 연결하고 유연하게 협업하는 팀이 되고 싶다는 의미를 담았습니다!</p>
@@ -308,12 +369,13 @@
                     class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">류형철</h5>
-                    <p class="card-text">안녕하세요 ~입니다.</p>
+                    <p class="card-text">안녕하세요 류형철입니다.</p>
                     <a class="btn btn-primary" href="ryu.html" role="button">개인페이지로 이동</a>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <img src="https://velog.velcdn.com/images/chat27/post/416ad379-f39e-4dc4-875c-8657143d1f38/image.jpg" class="card-img-top" alt="...">
+                <img src="https://velog.velcdn.com/images/chat27/post/416ad379-f39e-4dc4-875c-8657143d1f38/image.jpg"
+                    class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">박경오</h5>
                     <p class="card-text">안녕하세요 박경오입니다.</p>
@@ -325,7 +387,7 @@
                     class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">한정남</h5>
-                    <p class="card-text">안녕하세요 ~입니다.</p>
+                    <p class="card-text">안녕하세요 한정남입니다.</p>
                     <a class="btn btn-primary" href="Jeongnam.html" role="button">개인페이지로 이동</a>
                 </div>
             </div>
