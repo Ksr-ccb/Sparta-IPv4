@@ -11,7 +11,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
+    <script>document.addEventListener("scroll", function () {
+            document.querySelectorAll(".fade-in").forEach((el) => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
+                    el.classList.add("visible");
+                }
+            });
+        });
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap');
 
@@ -21,6 +28,56 @@
             font-style: normal;
         }
 
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+
+        body {
+            margin: 0;
+        }
+
+        .rounded-3 {
+            max-width: 600px;
+        }
+
+        .display-5 {
+            max-width: 700px;
+            width: 60%;
+            margin: 0 auto 0 0;
+            text-align: left;
+            padding-left: 20px;
+
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
 
         .row {
             width: 1300px;
@@ -30,7 +87,9 @@
 </head>
 
 <body>
+
     <!-- Navbar -->
+
     <header class="p-3 text-bg-dark">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -40,54 +99,58 @@
                     </svg>
                 </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <img src="https://ifh.cc/g/PR4fFx.jpg"
-                        class="icon"></li>
+                    <img src="https://ifh.cc/g/PR4fFx.jpg" class="icon"></li>
             </div>
         </div>
     </header>
-    <div class="header">
-        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-
-            <h1 class="display-5 fw-bold" style="font-family: 'Black Han Sans', sans-serif; ">IPv4</h1>
-            <p>내일배움캠프 첫주차 프로젝트 4조입니다</p> 
-            <p>우리 팀은 모두 MBTI에서 I(내향)와 P(즉흥)를 갖고 있어서, 공통점을 살려 팀 이름을 'IPv4'로 정했습니다. <br>
-            인터넷 프로토콜인 IPv4처럼, 우리도 신속하게 연결하고 유연하게 협엽하는 팀이 되고 싶다는 의미를 담았습니다!</p>
-
+    <div class="container" style="display: flex; justify-content: flex-start;">
+        <div class="header">
+            <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                <h1 class="display-5 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">IPv4</h1>
+                <p>내일배움캠프 첫주차 프로젝트 4조입니다</p>
+                <p>우리 팀은 모두 MBTI에서 I(내향)와 P(즉흥)를 갖고 있어서, 공통점을 살려 팀 이름을 'IPv4'로 정했습니다. <br>
+                    인터넷 프로토콜인 IPv4처럼, 우리도 신속하게 연결하고 유연하게 협업하는 팀이 되고 싶다는 의미를 담았습니다!</p>
+            </div>
         </div>
-        <div class="mycards">
-            <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://velog.velcdn.com/images/jarvis1/profile/c2a679e0-f366-4b54-8e92-3a4e09f6c6d7/image.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">류형철</h5>
-                        <p class="card-text">안녕하세요 ~입니다.</p>
-                        <a href="https://velog.io/@jarvis1/posts" class="card-link">~의 페이지로 이동하기</a>
-                    </div>
+    </div>
+
+    <div class="mycards">
+        <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
+            <div class="card" style="width: 18rem;">
+                <img src="https://velog.velcdn.com/images/jarvis1/profile/c2a679e0-f366-4b54-8e92-3a4e09f6c6d7/image.jpg"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">류형철</h5>
+                    <p class="card-text">안녕하세요 ~입니다.</p>
+                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">블로그로 이동하기</a>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="여기에 이미지주소 넣기" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">박경오</h5>
-                        <p class="card-text">안녕하세요 ~입니다.</p>
-                        <a href="여기에 주소입력" class="card-link">~의 페이지로 이동하기</a>
-                    </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="여기에 이미지주소 넣기" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">박경오</h5>
+                    <p class="card-text">안녕하세요 ~입니다.</p>
+                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">블로그로 이동하기</a>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="https://postfiles.pstatic.net/MjAyNTAyMThfMTcy/MDAxNzM5ODQzNDk4ODgw.sKG0ZxNf6qOP0jie-OAg1qZXDWU9oognaZuXcd-Ej9og.vK69yiBeCSCG73-f_HSfKbzGuh31U3td2PswfIqdcwIg.JPEG/DSM01245_%ED%95%9C%EC%A0%95%EB%82%A8%EC%9B%90%EC%84%9C%EC%9A%A9.jpg?type=w773" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">한정남</h5>
-                        <p class="card-text">안녕하세요 ~입니다.</p>
-                        <a href="여기에 주소입력" class="card-link">~의 페이지로 이동하기</a>
-                    </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://postfiles.pstatic.net/MjAyNTAyMThfMTcy/MDAxNzM5ODQzNDk4ODgw.sKG0ZxNf6qOP0jie-OAg1qZXDWU9oognaZuXcd-Ej9og.vK69yiBeCSCG73-f_HSfKbzGuh31U3td2PswfIqdcwIg.JPEG/DSM01245_%ED%95%9C%EC%A0%95%EB%82%A8%EC%9B%90%EC%84%9C%EC%9A%A9.jpg?type=w773"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">한정남</h5>
+                    <p class="card-text">안녕하세요 ~입니다.</p>
+                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">블로그로 이동하기</a>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="여기에 이미지주소 넣기" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">권새롬</h5>
-                        <p class="card-text">안녕하세요 ~입니다.</p>
-                        <a href="여기에 주소입력" class="card-link">~의 페이지로 이동하기</a>
-                    </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="여기에 이미지주소 넣기" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">권새롬</h5>
+                    <p class="card-text">안녕하세요 ~입니다.</p>
+                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">블로그로 이동하기</a>
                 </div>
+            </div>
+        </div>
+      
 
 </html>
