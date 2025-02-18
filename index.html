@@ -11,7 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script>document.addEventListener("scroll", function () {
+
+    <script>
+        document.addEventListener("scroll", function () {
             document.querySelectorAll(".fade-in").forEach((el) => {
                 if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
                     el.classList.add("visible");
@@ -77,18 +79,150 @@
         .container {
             display: flex;
             justify-content: center;
+            width: 70%;
+            margin: 30px auto;
         }
 
         .row {
             width: 1300px;
             margin: 33px auto 0% auto;
         }
+
+        .guestbook-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input,
+        textarea,
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .guestbook-container {
+            margin-top: 20px;
+            max-height: 300px;
+            /* 10개 이상일 때 스크롤 */
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .guestbook-entry {
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
+        }
+
+        .guestbook-entry:last-child {
+            border-bottom: none;
+        }
+
+        .nickname {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .gusetbook {
+            width: 70%;
+            margin: 30px auto;
+        }
     </style>
+
+    <script type="module">
+        //방명록 관련 스크립트 
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDnBaNbem0KeXNXJmGlgBeKvqkjREXJtDI",
+            authDomain: "sparta-e7518.firebaseapp.com",
+            projectId: "sparta-e7518",
+            storageBucket: "sparta-e7518.firebasestorage.app",
+            messagingSenderId: "274867630578",
+            appId: "1:274867630578:web:c1bf13a5e82027f9a67b6b"
+        };
+
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+        $("#postingbtn").click(async function () {
+            let nickname = $('#nickname').val();
+            let message = $('#message').val();
+            const guestbook = $("#guestbook");
+
+            //오류검사
+            if (nickname === "" || message === "") {
+                alert("닉네임과 내용을 입력해주세요!");
+                return;
+            }
+
+            let doc = {
+                'nickname': nickname,
+                'message': message,
+                'timestamp': new Date() // 타임스탬프 추가 (정렬용)
+            };
+            await addDoc(collection(db, "IPv4-guestbook"), doc);
+
+            let temp_html = `
+            <div class="guestbook-entry">
+                <span class="nickname">${nickname}</span>: ${message}
+            </div>
+        `;
+            guestbook.append(temp_html);
+
+            // 입력값 초기화
+            $('#nickname').val("");
+            $('#message').val("");
+        })
+
+        let guestbookRef = collection(db, "IPv4-guestbook");
+        let q = query(guestbookRef, orderBy("timestamp", "asc"));
+
+        onSnapshot(q, (snapshot) => {
+            $("#guestbook").empty(); // 기존 목록 비우기
+            snapshot.forEach((doc) => {
+                let data = doc.data();
+                let entryHtml = `
+            <div class="guestbook-entry">
+                <span class="nickname">${data.nickname}</span>: ${data.message}
+            </div>
+        `;
+                $("#guestbook").append(entryHtml);
+            });
+        });
+
+    </script>
+
 </head>
 
 <body>
 
     <!-- Navbar -->
+    <div>
+        <iframe width="300" height="60" 
+            src="https://vocaroo.com/embed/17fK6SEbfVt8?autoplay=1&muted=0" 
+            frameborder="0" allow="autoplay">
+        </iframe>
+    </div>
 
     <header class="p-3 text-bg-dark">
         <div class="container">
@@ -103,18 +237,20 @@
             </div>
         </div>
     </header>
+
     <div class="container" style="display: flex; justify-content: flex-start;">
         <div class="header">
             <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-                <h1 class="display-5 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">IPv4</h1>
+                <h1 class="display-5 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">Iv4</h1>
                 <p>내일배움캠프 첫주차 프로젝트 4조입니다</p>
                 <p>우리 팀은 모두 MBTI에서 I(내향)와 P(즉흥)를 갖고 있어서, 공통점을 살려 팀 이름을 'IPv4'로 정했습니다. <br>
                     인터넷 프로토콜인 IPv4처럼, 우리도 신속하게 연결하고 유연하게 협업하는 팀이 되고 싶다는 의미를 담았습니다!</p>
             </div>
+
         </div>
     </div>
 
-    <div class="mycards">
+    <div class="container">
         <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
             <div class="card" style="width: 18rem;">
                 <img src="https://velog.velcdn.com/images/jarvis1/profile/c2a679e0-f366-4b54-8e92-3a4e09f6c6d7/image.jpg"
@@ -122,7 +258,7 @@
                 <div class="card-body">
                     <h5 class="card-title">류형철</h5>
                     <p class="card-text">안녕하세요 ~입니다.</p>
-                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">블로그로 이동하기</a>
+                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">개인페이지로 이동</a>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
@@ -130,7 +266,7 @@
                 <div class="card-body">
                     <h5 class="card-title">박경오</h5>
                     <p class="card-text">안녕하세요 ~입니다.</p>
-                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">블로그로 이동하기</a>
+                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">개인페이지로 이동</a>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
@@ -139,18 +275,33 @@
                 <div class="card-body">
                     <h5 class="card-title">한정남</h5>
                     <p class="card-text">안녕하세요 ~입니다.</p>
-                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">블로그로 이동하기</a>
+                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">개인페이지로 이동</a>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <img src="여기에 이미지주소 넣기" class="card-img-top" alt="...">
+                <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/f39aaedf-45c5-4914-8baa-8a18193477e7/image.png?table=block&id=19eac552-1972-807f-9aba-cad93e116ca3&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739880000000&signature=UXhjuvSDaYN1rnh6M8aE3zM92sRj3kptwYgHD9jaN4A&downloadName=image.png"
+                    class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">권새롬</h5>
-                    <p class="card-text">안녕하세요 ~입니다.</p>
-                    <a class="btn btn-primary" href="https://velog.io/@jarvis1/posts" role="button">블로그로 이동하기</a>
+                    <p class="card-text">안녕하세요. 권새롬 입니다. 열심히하겠습니당</p>
+                    <a class="btn btn-primary" href="saerom.html" role="button">개인페이지로 이동</a>
                 </div>
             </div>
         </div>
-      
+    </div>
+
+    <div class="gusetbook">
+        <h2>방명록</h2>
+        <div class="guestbook-container" id="guestbook">
+            <p>방명록이 기록되는 공간입니다.</p>
+        </div>
+
+        <div class="guestbook-form">
+            <input type="text" id="nickname" placeholder="닉네임" maxlength="20" style="width: 500px;">
+            <textarea id="message" placeholder="내용을 입력하세요" rows="3"></textarea>
+            <button id="postingbtn">등록</button>
+        </div>
+
+    </div>
 
 </html>
