@@ -182,13 +182,6 @@
             };
             await addDoc(collection(db, "IPv4-guestbook"), doc);
 
-            let temp_html = `
-            <div class="guestbook-entry">
-                <span class="nickname">${nickname}</span>: ${message}
-            </div>
-        `;
-            guestbook.append(temp_html);
-
             // 입력값 초기화
             $('#nickname').val("");
             $('#message').val("");
@@ -198,7 +191,9 @@
         let q = query(guestbookRef, orderBy("timestamp", "asc"));
 
         onSnapshot(q, (snapshot) => {
+
             $("#guestbook").empty(); // 기존 목록 비우기
+
             snapshot.forEach((doc) => {
                 let data = doc.data();
                 let entryHtml = `
