@@ -144,7 +144,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { collection, addDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -163,10 +163,10 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-
         $("#postingbtn").click(async function () {
             let nickname = $('#nickname').val();
             let message = $('#message').val();
+            let password = $('#password').val();
             const guestbook = $("#guestbook");
 
             //오류검사
@@ -175,15 +175,21 @@
                 return;
             }
 
+            let timestamp = new Date(); // 타임스탬프 추가
+            let docId = timestamp.toISOString(); // 타임스탬프를 문자열로 변환하여 ID로 사용
+
             let doc = {
                 'nickname': nickname,
                 'message': message,
-                'timestamp': new Date() // 타임스탬프 추가 (정렬용)
+                'password': password,
+                'timestamp': timestamp // 타임스탬프 추가 (정렬용)
             };
+            // 문서 ID로 타임스탬프를 사용하여 저장
             await addDoc(collection(db, "IPv4-guestbook"), doc);
 
             // 입력값 초기화
             $('#nickname').val("");
+            $('#password').val("");
             $('#message').val("");
         })
 
@@ -197,14 +203,65 @@
             snapshot.forEach((doc) => {
                 let data = doc.data();
                 let entryHtml = `
-            <div class="guestbook-entry">
+            <div class="guestbook-entry" data-id="${doc.id}" data-password="${data.password}">
                 <span class="nickname">${data.nickname}</span>: ${data.message}
+                <span class="edit-delete-icons">
+                    <span class="edit-icon" style="cursor: pointer; margin-left: 10px;">✏️</span>
+                    <span class="delete-icon" style="cursor: pointer; margin-left: 10px;">❌</span>
+                </span>
             </div>
         `;
                 $("#guestbook").append(entryHtml);
             });
         });
 
+        $(".delete-icon").click(function () {
+            let entry = $(this).closest(".guestbook-entry"); // 해당 div 찾기
+            let password = entry.data("password"); // 숨겨진 비밀번호 가져오기
+            let userPassword = prompt("비밀번호를 입력해주세요:");
+
+            if (userPassword === password) {
+                // Firestore에서 해당 문서 삭제하기
+                let docId = $(this).closest('.guestbook-entry').data("id"); // 이곳에서 문서 ID를 가져옵니다.
+                let docRef = doc(db, "IPv4-guestbook", docId);
+                deleteDoc(docRef).then(() => {
+                    alert("삭제되었습니다!");
+                    location.reload();  // 또는 해당 부분만 업데이트하는 방식으로 수정 가능합니다.
+                }).catch((error) => {
+                    alert("삭제에 실패했습니다.");
+                    console.error("Error deleting document: ", error);
+                });
+            } else {
+                alert("비밀번호가 틀렸습니다.");
+            }
+        });
+
+        $(document).on("click", ".edit-icon", function () {
+            let entry = $(this).closest(".guestbook-entry"); // 해당 div 찾기
+            let password = entry.data("password"); // 숨겨진 비밀번호 가져오기
+            let userPassword = prompt("비밀번호를 입력해주세요:");
+
+            // 비밀번호 검증
+            if (password === userPassword) { //맞당ㅆ음
+                let newMessage = prompt("수정할 내용을 입력하세요:");
+                if (newMessage !== null) {
+                    // Firestore에서 해당 문서 수정하기
+                    let docId = $(this).closest('.guestbook-entry').data("id"); // 이곳에서 문서 ID를 가져옵니다.
+                    let docRef = doc(db, "IPv4-guestbook", docId);
+                    updateDoc(docRef, {
+                        message: newMessage
+                    }).then(() => {
+                        alert("수정되었습니다!");
+                        location.reload();  // 또는 해당 부분만 업데이트하는 방식으로 수정 가능합니다.
+                    }).catch((error) => {
+                        alert("수정에 실패했습니다.");
+                        console.error("Error updating document: ", error);
+                    });
+                }
+            } else {
+                alert("비밀번호가 틀렸습니다." + userPassword);
+            }
+        });
     </script>
 
 </head>
@@ -213,9 +270,8 @@
 
     <!-- Navbar -->
     <div>
-        <iframe width="300" height="60" 
-            src="https://vocaroo.com/embed/17fK6SEbfVt8?autoplay=1&muted=1" 
-            frameborder="0" allow="autoplay">
+        <iframe width="300" height="60" src="https://vocaroo.com/embed/17fK6SEbfVt8?autoplay=1&muted=1" frameborder="0"
+            allow="autoplay">
         </iframe>
     </div>
 
@@ -292,7 +348,12 @@
         </div>
 
         <div class="guestbook-form">
-            <input type="text" id="nickname" placeholder="닉네임" maxlength="20" style="width: 500px;">
+            <div style="display: flex; align-items: center;">
+                <input type="text" id="nickname" placeholder="이름" maxlength="20"
+                    style="width: 200px; margin-right: 10px;">
+                <input type="password" id="password" placeholder="비밀번호(수정, 삭제시 필요해요)" maxlength="20"
+                    style="width: 400px; margin-right: 10px;">
+            </div>
             <textarea id="message" placeholder="내용을 입력하세요" rows="3"></textarea>
             <button id="postingbtn">등록</button>
         </div>
