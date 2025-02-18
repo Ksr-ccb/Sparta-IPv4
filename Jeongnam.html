@@ -41,15 +41,25 @@
         
         .footages {
             color: rgb(61, 29, 173);
-
             display: flex;
             align-items: center;
             justify-content: center;            background-position: center;
         }
-        .footages>button{
-            width: 150px;
-            height: 40px;
-            background-color : rgb(95, 255, 95);
+
+        .footages>#rtbtn {
+            background-color: rgb(207, 205, 77);
+            margin : 0px 15px 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;            background-position: center;
+        }
+
+        .footages>#blbtn {
+            background-color: rgb(110, 217, 236);
+            margin : 0px 15px 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;            background-position: center;
         }
 
         .mycards {
@@ -131,7 +141,8 @@
     </div>
     <div></div>
     <div class="footages">
-        <button><a href="index.html"><h4>돌아가기</h4></a></button>
+        <button id="rtbtn"><a href="index.html" style="text-decoration:none"><h4>돌아가기</h4></a>
+        <button id="blbtn"><a href="https://blog.naver.com/jungnam369" style="text-decoration:none"><h4>블로그</h4></a></button>
     </div>
 </body>
 
