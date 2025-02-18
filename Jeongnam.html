@@ -13,21 +13,21 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Nanum+Brush+Script&family=Nanum+Pen+Script&display=swap');
 
-        *{
+        * {
             font-family: "Gowun Dodum", serif;
             font-weight: 400;
             font-style: normal;
         }
 
-        body{
-            background-color:gray;
+        body {
+            background-color: gray;
         }
 
 
         .mytitle {
             width: 1800px;
             height: 250px;
-            color: yellowgreen;
+            color: transparent;
 
             display: flex;
             flex-direction: column;
@@ -69,71 +69,13 @@
             color: blueviolet;
         }
 
-        .card{
-            width : 500px;
-            height : 650px;
-            margin : 20px 30px 10px 30px;
+        .card {
+            width: 500px;
+            height: 650px;
+            margin: 20px 30px 10px 30px;
             background-color: silver;
         }
-
-        .mybtn {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mybtn>button {
-            margin-right: 5px;
-        }
     </style>
-    <script type="module">
-        // Firebase SDK 라이브러리 가져오기
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-
-
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyB9JVwOTnqXJ9yukEO0vtocwQ1hO9lj4mU",
-            authDomain: "sparta-14919.firebaseapp.com",
-            projectId: "sparta-14919",
-            storageBucket: "sparta-14919.firebasestorage.app",
-            messagingSenderId: "481623718664",
-            appId: "1:481623718664:web:a943e3eb4685e655cf4abd",
-            measurementId: "G-NSWQX2YJ60"
-        };
-
-
-        // Firebase 인스턴스 초기화
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-
-        let docs = await getDocs(collection(db, "mypage"));
-        docs.forEach((doc) => {
-            let row = doc.data();
-
-            let image = row['image'];
-            let title = row['title'];
-            let content = row['content'];
-
-            let temp_html = `
-            <div class="col">
-            <div class="card h-100">
-                <img src="${image}"
-                    class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h4 class="card-title">${title}</h4>
-                    <h5 class="card-text">${content}</h5>
-                </div>
-            </div>
-        </div>`;
-            $('#card').append(temp_html);
-        });
-    </script>
 </head>
 
 <body>
@@ -150,12 +92,12 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h3 class="card-title">한정남</h3>
-                    <h4 class="card-text">전공 : 전기공학과</br>MBTI : ISTP</br>말주변은 부족하지만 맡은 바는 최선을 다합니다.</h4>
+                    <h4 class="card-text">전공 : 전기공학</br>MBTI : ISTP</br>말주변은 부족하지만 맡은 바는 최선을 다합니다.</h4>
+                    <h5 class="card-text">장점 : 침착하며 느긋함</br>집중력이 좋음</h5>
                     <p class="card-text">언제나 무언가에 취해있습니다.</p>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div class="mypostingbox" id="postingbox" style="display: none;">
@@ -171,13 +113,38 @@
             <input type="text" class="form-control" id="content" placeholder="내용">
             <label for="floatingInput">내용</label>
         </div>
-        <div class="mybtn">
-            <button id="postingbtn" type="button" class="btn btn-dark">쌓아올리기</button>
-            <button type="button" class="btn btn-outline-dark">닫기</button>
-        </div>
     </div>
     <div class="mycards">
         <div id="card" class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://images.stockcake.com/public/1/8/f/18faf656-9c51-4900-873c-cc3e263bab55_large/ghostly-figures-dance-stockcake.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">흐릿함</h4>
+                        <h5 class="card-text">종종 사라집니다</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/I66goyYKTkc/maxresdefault.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">마 작 조 아</h4>
+                        <h5 class="card-text">온라인 4탁을 즐깁니다</br>작혼에서 발견하실 수 있습니다</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://cf.geekdo-images.com/WOm-EjxK4o5XVs2t2SrSbA__itemrep/img/pii9pxN-xfBvrq6KUsviVsPv51E=/fit-in/246x300/filters:strip_icc()/pic4949207.png"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">보드게임</h4>
+                        <h5 class="card-text">혼란스러울스록 좋아합니다</h5>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
