@@ -98,8 +98,34 @@
             width: 600px;
         }
 
-    </style>
 
+        .merit-text {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* 왼쪽(항목):오른쪽(답변) 비율 */
+            gap: 5px 15px;
+            /* 세로 5px, 가로 15px 간격 */
+        }
+
+        .merit-text div {
+            font-size: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .experience {
+            padding: 30px;
+        }
+
+        .experience > .card{
+            width : 800px;
+            margin: 10px;
+        }
+    </style>
+    <script>
+
+    </script>
 </head>
 
 <body>
@@ -110,10 +136,7 @@
                 <a class="nav-link" href="#home">소개합니다</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#development">개발경험</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#scrollspyHeading3">취미</a>
+                <a class="nav-link" href="#hobby">취미</a>
             </li>
         </ul>
     </nav>
@@ -138,69 +161,113 @@
                         <div>ISTP</div>
                         <div class="label">취미:</div>
                         <div>엄청많음</div>
-
+                        <div class="label">
+                            <hr>
+                        </div>
+                        <hr>
+                        <a href="https://velog.io/@tofha054/posts"><img
+                                src="https://velog.velcdn.com/images/hhjever09/post/0b418488-3c8d-4abf-9477-e5a252fe9743/image.png"
+                                alt="..." style="height: 70px;"></a>
+                        <a href="https://github.com/Ksr-ccb"><img
+                                src="https://velog.velcdn.com/images/hodu_angel/post/78b24b02-37bc-4e87-8dee-e7f4b5c6d21e/image.png"
+                                alt="..." style="width: 150px;"></a>
+                        <div class="label">
+                            <hr>
+                        </div>
+                        <hr>
                     </div>
                     <div style="font-size: 20px;">
-                        <hr>
                         안녕하세요! 내일배움캠프 스프링 6기에 참여하게 된 권새롬입니다 <br>
                         작년에 졸업하고 취업 준비를 하면서 부트캠프의 필요성을 많이 느끼게 되어 참여하게 되었습니다! <br>
-                        4개월 동안 좋은 경험 많이 하고 가고싶어요~
+                        4개월 동안 좋은 경험 많이 하고 가고싶어요
                     </div>
 
                 </div>
-
             </div>
-        </div>
-        <hr>
-        <div class="categoty" id="development">
-            <h2> 이때까지 해왔던 것들 </h2>
+            <h4>&emsp; &emsp; 객관적으로 살펴본 장점</h4>
             <div class="mycontents">
+                <div class="merit-text">
+                    <hr>
+                    <br>
+                    <div style="background-color: bisque; ">뒤끝이 없다</div>
+                    <div style="background-color:rgb(141, 238, 141);">될때까지 한다</div>
+                    <div style="background-color:lightblue;">꾸준히 한다</div>
+                    <div style="background-color:rgb(223, 200, 228);">잘 웃는다</div>
+                </div>
+                <br><br><br>
+            </div>
+            <div style="font-size: 20px;">
+                장점을 잘 살려서 협엽에 도움이 되려고 노력중입니다. <br>
+                협업에서 가장 중요한 것은 다른 사람의 말을 듣는 것이라고 생각합니다. <br>
+                팀 프로젝트를 하면서 협업에 대한 것을 많이 배우고, 협업을 대할 때 문제가 있으면 빠르게 고치도록 노력하겠습니다.
             </div>
         </div>
+        <br><br><br>
         <hr>
+        <br><br><br>
         <div class="categoty" id="hobby">
             <h2> 잡다한 취미들 </h2>
+            <br><br>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col">
-                  <div class="card">
-                    <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/b66e25fe-676d-483e-9bff-f456ac02cab1/KakaoTalk_20250113_151900781_02.jpg?table=block&id=19dac552-1972-80f0-9ccc-ea643313ffc0&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=r2Qhz0Oms-ftj9UrsADPFg1XDVtZLnuibB-co_70wOg&downloadName=KakaoTalk_20250113_151900781_02.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">컴퓨터 조립</h5>
-                      <p class="card-text">18년도 제 첫 컴퓨터를 혼자 조립했을 때 부터 부품교체나 친구들 컴퓨터까지 쫌쫌따리 조립해주다보니 취미가 되엇습니다. <br> 막 엄청 잘 알지도 못하는데 주변에 할줄 아는 사람이 없어서... 그렇게 됐다. 재밋어요 </p>
+                    <div class="card">
+                        <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/b66e25fe-676d-483e-9bff-f456ac02cab1/KakaoTalk_20250113_151900781_02.jpg?table=block&id=19dac552-1972-80f0-9ccc-ea643313ffc0&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=r2Qhz0Oms-ftj9UrsADPFg1XDVtZLnuibB-co_70wOg&downloadName=KakaoTalk_20250113_151900781_02.jpg"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">컴퓨터 조립</h5>
+                            <p class="card-text">18년도 제 첫 컴퓨터를 혼자 조립했을 때 부터 부품교체나 친구들 컴퓨터까지 쫌쫌따리 조립해주다보니 취미가 되엇습니다. <br>
+                                막 엄청 잘 알지도 못하는데 주변에 할줄 아는 사람이 없어서... 그렇게 됐다. 재밋어요 </p>
+                        </div>
                     </div>
-                  </div>
                 </div>
 
                 <div class="col">
-                  <div class="card">
-                    <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/81040e31-b138-4d44-8fc7-8ee8a733542a/KakaoTalk_20250113_151900781.jpg?table=block&id=19dac552-1972-800b-a26b-edc86f60af13&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=I5z-YRrw2t6-w45E4qZ5ffFIivFWmJgcAKYLYO7v7ZA&downloadName=KakaoTalk_20250113_151900781.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">짱구 짤 모으기</h5>
-                      <p class="card-text">티빙 연간 결제권을 어느새 4년째 구매하고있는데요. <br> 거기서 뭘하냐면 짱구 정주행을 하면서 귀여운 짤을 캡쳐해서 모아요 ^^ 
-                        <br> 지금까지 500장정도 모았어요
-                        <br> 짱구너무 귀엽다. 굿즈도 살 수 잇는건 아주 조금씩 사요! </p>
+                    <div class="card">
+                        <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/81040e31-b138-4d44-8fc7-8ee8a733542a/KakaoTalk_20250113_151900781.jpg?table=block&id=19dac552-1972-800b-a26b-edc86f60af13&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=I5z-YRrw2t6-w45E4qZ5ffFIivFWmJgcAKYLYO7v7ZA&downloadName=KakaoTalk_20250113_151900781.jpg"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">짱구 짤 모으기</h5>
+                            <p class="card-text">티빙 연간 결제권을 어느새 4년째 구매하고있는데요. <br> 거기서 뭘하냐면 짱구 정주행을 하면서 귀여운 짤을 캡쳐해서 모아요
+                                ^^
+                                <br> 지금까지 500장정도 모았어요
+                                <br> 짱구너무 귀엽다. 굿즈도 살 수 잇는건 아주 조금씩 사요!
+                            </p>
+                        </div>
                     </div>
-                  </div>
                 </div>
                 <div class="col">
-                  <div class="card">
-                    <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/9d3be5a3-9ae5-44b0-b844-99a81a2a8823/cc6a31e8-c053-4488-86fb-0a7e4d7a79d2.png?table=block&id=19dac552-1972-808d-bf55-e230a2575693&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=p06Iq4ivn4WHL4a9ioV9uoUYrGi_wflPDsQqL9wzJMw&downloadName=KakaoTalk_20250113_151900781_01.jpg.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">깜이랑 복동이</h5>
-                      <p class="card-text">본가에서 최근에 입양한 우리집 아기 갱얼쥐 자랑이 하고싶었어요<br> 본가 갈때마다 덩치가 1.5배씩 늘어서 사진만 엄청찍는 중 ㅜㅜ </p>
+                    <div class="card">
+                        <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/9d3be5a3-9ae5-44b0-b844-99a81a2a8823/cc6a31e8-c053-4488-86fb-0a7e4d7a79d2.png?table=block&id=19dac552-1972-808d-bf55-e230a2575693&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=p06Iq4ivn4WHL4a9ioV9uoUYrGi_wflPDsQqL9wzJMw&downloadName=KakaoTalk_20250113_151900781_01.jpg.png"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">깜이랑 복동이</h5>
+                            <p class="card-text">본가에서 최근에 입양한 우리집 아기 갱얼쥐 자랑이 하고싶었어요<br> 시골이고 마당에서 키우는 개라 지금은 꼬질꼬질합니다..
+                                <br>본가 갈때마다 덩치가 1.5배씩 늘어서 사진만 엄청찍는 중 ㅜㅜ </p>
+                        </div>
                     </div>
-                  </div>
                 </div>
                 <div class="col">
-                  <div class="card">
-                    <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/e89064d8-fd25-4d90-8561-48037b26480a/9fe06e8d-3d55-4c63-8b00-b76f74ee8598.png?table=block&id=19dac552-1972-80ef-b8fc-cd3d78293723&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=IDw7cVp_PfzJPDKFe7KK9-5QL7Da4mkiv9audKynY0I&downloadName=KakaoTalk_20250113_151900781_05.jpg.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">게임</h5>
-                      <p class="card-text">근 15년간 넥슨의 노예가 되어 게임을 해오는 중입니다. . . .<br> 매년 지스타 출석도장은 물론찍고잇어요</p>
+                    <div class="card">
+                        <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/d9f96bac-f81a-4c33-bdb5-551165e6897f/KakaoTalk_20250113_151900781_06.jpg?table=block&id=19dac552-1972-80a8-a508-fcbde2794282&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739865600000&signature=FFxnlqP0tOE9h-KKpVNIal6C_Tcp7p-MQx61EZh91wU&downloadName=KakaoTalk_20250113_151900781_06.jpg"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">태권도</h5>
+                            <p class="card-text">8살 때 남들따라 시작한 태권도를 작년까지 꾸준히 했습니다! <br>4단 취득하고 사범으로 아르바이트 까지 했는데, 작년에 팔
+                                아대안하고 스파링하다가 손 뽀개먹고 그뒤로 쉬고있네용 ㅎㅎ.. </p>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/e89064d8-fd25-4d90-8561-48037b26480a/9fe06e8d-3d55-4c63-8b00-b76f74ee8598.png?table=block&id=19dac552-1972-80ef-b8fc-cd3d78293723&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739815200000&signature=IDw7cVp_PfzJPDKFe7KK9-5QL7Da4mkiv9audKynY0I&downloadName=KakaoTalk_20250113_151900781_05.jpg.png"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">게임</h5>
+                            <p class="card-text">근 15년간 넥슨의 노예가 되어 게임을 해오는 중입니다. . . .<br> 매년 지스타 출석도장은 물론찍고잇어요</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
