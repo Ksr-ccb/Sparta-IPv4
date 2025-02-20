@@ -23,9 +23,18 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Jua&family=Noto+Sans+KR:wght@500&display=swap');
+
+        .gamja-Flower-regular{
+            font-family: "Gamja Flower", serif;
+            font-weight: 400;
+            font-style: normal;
+
+
+        }
 
         * {
-            font-family: "Gamja Flower", serif;
+            font-family: "Gowun Dodum", serif;
             font-weight: 400;
             font-style: normal;
         }
@@ -65,7 +74,7 @@
             .container,
             .container-md,
             .container-sm {
-                
+
                 height: 360px;
             }
         }
@@ -193,6 +202,20 @@
             align-items: flex-end;
             /* 버튼을 오른쪽 정렬 */
         }
+
+        .progress{
+            background-color: rgb(0, 100, 255);
+            margin : 20px;
+            height: 200px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .progress > p{
+            color: #ffffff;
+        }
     </style>
 
     <script type="module">
@@ -277,6 +300,7 @@
             let password = entry.data("password"); // 숨겨진 비밀번호 가져오기
             let userPassword = prompt("비밀번호를 입력해주세요:");
 
+
             if (String(password) === userPassword.trim()) {
                 // Firestore에서 해당 문서 삭제하기
                 let docId = $(this).closest('.guestbook-entry').data("id"); // 이곳에서 문서 ID를 가져옵니다.
@@ -296,8 +320,10 @@
         $(document).on("click", ".edit-icon", function () {
             let entry = $(this).closest(".guestbook-entry"); // 해당 div 찾기
             let password = entry.data("password"); // 숨겨진 비밀번호 가져오기
-            let userPassword = prompt("비밀번호를 입력해주세요:");
-            let oldmessage= entry.find(".message").html()
+            //let userPassword = prompt("비밀번호를 입력해주세요:");
+            let message = entry.find(".message").html();
+            console.log(messageText);
+
             // 비밀번호 검증
             if (String(password) === userPassword.trim()) { //맞당ㅆ음
                 let newMessage = prompt("수정할 내용을 입력하세요:",`${oldmessage}`);
@@ -349,13 +375,13 @@
     <div class="container" style="display: flex;">
         <div class="header">
             <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-                <h1 class="display-5 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">IPv4</h1>
+                <h1 class="display-6 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">IPv4</h1>
                 <p>내일배움캠프 첫주차 프로젝트 4조입니다</p>
                 <p>우리 팀은 모두 MBTI에서 I(내향)와 P(즉흥)를 갖고 있어서, 공통점을 살려 팀 이름을 'IPv4'로 정했습니다. <br>
                     인터넷 프로토콜인 IPv4처럼, 우리도 신속하게 연결하고 유연하게 협업하는 팀이 되고 싶다는 의미를 담았습니다!</p>
             </div>
-            <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-                <h1 class="display-5 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">팀 규칙과 목표</h1>
+            <div class ="btn btn-primary rounded-3 progress">
+                <h1 class="display-6 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">규칙과 목표</h1>
                 <p>1. 결석하지 않기 (하루 12시간 꼭 채우기)</p>
                 <p>2. 데일리 스크럼은 오전 9시</p>
                 <p>3. 하고 싶은 말이나 의견은 적극적으로 말하기</p>
@@ -393,8 +419,7 @@
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <img src="http://211.210.212.15/resources/image.png"
-                    class="card-img-top" alt="...">
+                <img src="http://211.210.212.15/resources/image.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">권새롬</h5>
                     <p class="card-text">안녕하세요. 권새롬 입니다. 열심히하겠습니당</p>
