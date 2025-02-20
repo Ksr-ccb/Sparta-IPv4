@@ -297,10 +297,10 @@
             let entry = $(this).closest(".guestbook-entry"); // 해당 div 찾기
             let password = entry.data("password"); // 숨겨진 비밀번호 가져오기
             let userPassword = prompt("비밀번호를 입력해주세요:");
-
+            let oldmessage= entry.find(".message").html()
             // 비밀번호 검증
             if (String(password) === userPassword.trim()) { //맞당ㅆ음
-                let newMessage = prompt("수정할 내용을 입력하세요:");
+                let newMessage = prompt("수정할 내용을 입력하세요:",`${oldmessage}`);
                 if (newMessage !== null) {
                     // Firestore에서 해당 문서 수정하기
                     let docId = $(this).closest('.guestbook-entry').data("id"); // 이곳에서 문서 ID를 가져옵니다.
