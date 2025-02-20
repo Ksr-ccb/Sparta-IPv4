@@ -133,10 +133,6 @@
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-
-
-
-
         .row {
             width: 1300px;
             margin: 33px auto 0% auto;
@@ -265,7 +261,7 @@
                 let data = doc.data();
                 let entryHtml = `
                     <div class="guestbook-entry" data-id="${doc.id}" data-password="${data.password}">
-                        <span class="nickname">${data.nickname}</span>: ${data.message}
+                        <span class="nickname">${data.nickname}</span>:<span class="message">${data.message}</span> 
                         <span class="edit-delete-icons">
                             <span class="edit-icon" style="cursor: pointer; margin-left: 10px;">✏️</span>
                             <span class="delete-icon" style="cursor: pointer; margin-left: 10px;">❌</span>
@@ -350,7 +346,7 @@
         </div>
     </header>
 
-    <div class="container" style="display: flex; justify-content: flex-start;">
+    <div class="container" style="display: flex;">
         <div class="header">
             <div class="p-5 mb-4 bg-body-tertiary rounded-3">
                 <h1 class="display-5 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">IPv4</h1>
@@ -358,7 +354,12 @@
                 <p>우리 팀은 모두 MBTI에서 I(내향)와 P(즉흥)를 갖고 있어서, 공통점을 살려 팀 이름을 'IPv4'로 정했습니다. <br>
                     인터넷 프로토콜인 IPv4처럼, 우리도 신속하게 연결하고 유연하게 협업하는 팀이 되고 싶다는 의미를 담았습니다!</p>
             </div>
-
+            <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                <h1 class="display-5 fw-bold" style="font-family: 'Black Han Sans', sans-serif;">팀 규칙과 목표</h1>
+                <p>1. 결석하지 않기 (하루 12시간 꼭 채우기)</p>
+                <p>2. 데일리 스크럼은 오전 9시</p>
+                <p>3. 하고 싶은 말이나 의견은 적극적으로 말하기</p>
+            </div>
         </div>
     </div>
 
