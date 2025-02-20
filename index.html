@@ -264,14 +264,14 @@
             snapshot.forEach((doc) => {
                 let data = doc.data();
                 let entryHtml = `
-            <div class="guestbook-entry" data-id="${doc.id}" data-password="${data.password}">
-                <span class="nickname">${data.nickname}</span>: ${data.message}
-                <span class="edit-delete-icons">
-                    <span class="edit-icon" style="cursor: pointer; margin-left: 10px;">✏️</span>
-                    <span class="delete-icon" style="cursor: pointer; margin-left: 10px;">❌</span>
-                </span>
-            </div>
-        `;
+                    <div class="guestbook-entry" data-id="${doc.id}" data-password="${data.password}">
+                        <span class="nickname">${data.nickname}</span>: ${data.message}
+                        <span class="edit-delete-icons">
+                            <span class="edit-icon" style="cursor: pointer; margin-left: 10px;">✏️</span>
+                            <span class="delete-icon" style="cursor: pointer; margin-left: 10px;">❌</span>
+                        </span>
+                    </div>
+                `;
                 $("#guestbook").append(entryHtml);
             });
         });
@@ -392,7 +392,7 @@
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <img src="https://file.notion.so/f/f/3acdc43e-2d93-49ac-80ad-0c108722fa78/f39aaedf-45c5-4914-8baa-8a18193477e7/image.png?table=block&id=19eac552-1972-807f-9aba-cad93e116ca3&spaceId=3acdc43e-2d93-49ac-80ad-0c108722fa78&expirationTimestamp=1739880000000&signature=UXhjuvSDaYN1rnh6M8aE3zM92sRj3kptwYgHD9jaN4A&downloadName=image.png"
+                <img src="http://211.210.212.15/resources/image.png"
                     class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">권새롬</h5>
